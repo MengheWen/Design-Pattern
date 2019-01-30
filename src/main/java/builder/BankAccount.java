@@ -2,6 +2,12 @@ package builder;
 
 public class BankAccount {
 
+    private long accountNumber;
+    private String owner;
+    private String branch;
+    private double balance;
+    private double interestRate;
+
 
     public static class Builder {
 
@@ -10,9 +16,11 @@ public class BankAccount {
         private String branch;
         private double balance;
         private double interestRate;
+
         public Builder(long accountNumber) {
             this.accountNumber = accountNumber;
         }
+
         public Builder withOwner(String owner){
             this.owner = owner;
             return this;  //By returning the builder each time, we can create a fluent interface.
@@ -29,6 +37,7 @@ public class BankAccount {
             this.interestRate = interestRate;
             return this;
         }
+
         public BankAccount build(){
             //Here we create the actual bank account object, which is always in a fully initialised state when it's returned.
             BankAccount account = new BankAccount();  //Since the builder is in the BankAccount class, we can invoke its private constructor.
@@ -37,6 +46,10 @@ public class BankAccount {
             account.branch = this.branch;
             account.balance = this.balance;
             account.interestRate = this.interestRate;
+
+            //You can put validation in build method.
+            // Or like other relationships between each factors
+
             return account;
         }
     }
