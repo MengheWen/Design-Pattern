@@ -38,3 +38,12 @@ Proxy Pattern
 
 Questions: 
 1. Why javax.persistence.PersistenceContext is an example of proxies in Java library? 
+    A: JPA is a implementation of proxy pattern (EJB)
+
+Comments: 
+    Proxy == Wrapper
+    Spring winded out -- hides the method wrapped with a Cache Proxy. 
+    For example: @Bean @Server @Component --> Wrapped in a proxy. 
+                @Bean is a Singleton Pattern by default. 
+                Dashboard Header Server --> User Server (get populated by header) 
+

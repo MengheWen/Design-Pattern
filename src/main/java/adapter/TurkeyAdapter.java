@@ -18,6 +18,5 @@ public class TurkeyAdapter implements Duck {
         for(int i = 0; i < 5; i++){
             turkey.fly();
         }
-
     }
 }
