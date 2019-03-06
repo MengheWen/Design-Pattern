@@ -1,5 +1,5 @@
-Ports and Adapters
-        -- also known as hexagonal architecture
+orts and Adapters
+       -- also known as hexagonal architecture
 
 Problem we are trying to solve: 
     Single Responsibility in Traditional 3 - Layer Architecture: 
@@ -21,15 +21,26 @@ Solution: Ports and Adapters
     resulting in reduced cost of maintenance and development. 
     In addition, individual pieces can be mocked out, developed, and tested in isolation. 
     Domain logic can be isolated from side-effect-inducing dependencies, specifically databases and web services.
+    
+    The main idea of Ports & Adapters is to define the structure of an application so that it could be run by different kinds of clients (humans, tests cases, other applications,…), 
+    and it could be tested in isolation from external devices of the real world that the application depends on (databases, servers, other applications, …).
 
 click here for port and adapters structure: https://spin.atomicobject.com/2013/02/23/ports-adapters-software-architecture/
+An comprehensive tutorial: https://softwarecampament.wordpress.com/portsadapters/
 
 
-
-* 
-*  
-* 
-
+* A port is an entry point, provided by the core logic. It defines a set of functions. 
+* Primary ports are the main API of the application. They are called by the primary adapters that from the user side of the application. 
+    Examples of primary ports are functions that allow you to change objects, attributes, and relations in the core logic. 
+    
+* An adapter is a bridge between the application and the service that is needed by the application. It fits a specific port.  
+* A primary adapter is a piece of code between the user and the core logic. One adapter could be a unit test function for the core logic. 
+    Another could be a controller-like function that interacts both with the UI and the core logic. 
+    The primary adapter calls the API functions of the core logic. 
+* A secondary adapter is an implementation of the secondary port (which is an interface). 
+    For instance, it can ve a small class that converts application storage requests to a given database, and return the result of the database in a format requested by the secondary port. 
+    It can also be a mock database object needed to unit tests certain parts of the core logic. 
+    The core logic calls the functions of the secondary adapter. 
 
 Q: 
 A: 
